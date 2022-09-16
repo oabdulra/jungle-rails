@@ -4,6 +4,7 @@ class Admin::ProductsController < ApplicationController
     @products = Product.order(id: :desc).all
   end
 
+  http_basic_authenticate_with name: ENV['ADMIN_USERNAME'], password: ENV['PASSWORD']
   def new
     @product = Product.new
   end
